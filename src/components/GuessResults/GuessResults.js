@@ -6,7 +6,6 @@ import { range } from "../../utils";
 import { checkGuess } from "../../game-helpers";
 
 function GuessResults({ answer, guesses }) {
-  console.log({ guesses });
   return (
     <div className="guess-results">
       {range(NUM_OF_GUESSES_ALLOWED).map((i) => (
