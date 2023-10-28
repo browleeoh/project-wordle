@@ -14,16 +14,14 @@ console.info({ answer });
 
 function Game() {
   const [guesses, setGuesses] = React.useState([]);
-  const [numOfGuess, setNumOfGuess] = React.useState(0);
   const [gameStatus, setGameStatus] = React.useState("running");
 
   function handleAddGuess(tentativeGuess) {
-    setNumOfGuess((numOfGuess) => numOfGuess + 1);
     setGuesses((guesses) => [...guesses, tentativeGuess]);
 
     // If the number of guesses is equal to the number of guesses allowed,
     if (
-      numOfGuess === NUM_OF_GUESSES_ALLOWED - 1 &&
+      guesses.length === NUM_OF_GUESSES_ALLOWED - 1 &&
       tentativeGuess !== answer
     ) {
       setGameStatus("sad");
