@@ -9,7 +9,7 @@ function GuessInput({ handleAddGuess }) {
 
     // add guess to guesses
     console.log({ guess: tentativeGuess });
-    handleAddGuess({ id: crypto.randomUUID(), value: tentativeGuess });
+    handleAddGuess(tentativeGuess);
 
     // clear the input
     setTentativeGuess("");

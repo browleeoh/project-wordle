@@ -3,7 +3,7 @@ import React from "react";
 import { range } from "../../utils";
 
 function Guess({ guess }) {
-  const letters = guess?.value?.split("");
+  const letters = guess?.split("");
 
   return (
     <p className="guess">

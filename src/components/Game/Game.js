@@ -16,6 +16,7 @@ function Game() {
   const [numOfGuess, setNumOfGuess] = React.useState(0);
 
   function handleAddGuess(tentativeGuess) {
+    // If the use has used up all their guesses, we'll stop the function here.
     if (numOfGuess === NUM_OF_GUESSES_ALLOWED) {
       alert(
         "You have used up all your guesses. Please refresh the page to play again."
