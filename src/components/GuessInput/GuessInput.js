@@ -8,8 +8,8 @@ function GuessInput({ handleAddGuess }) {
     e.preventDefault();
 
     // add guess to guesses
-    console.log({ value: tentativeGuess });
-    handleAddGuess({ id: crypto.randomUUID(), guess: tentativeGuess });
+    console.log({ guess: tentativeGuess });
+    handleAddGuess({ id: crypto.randomUUID(), value: tentativeGuess });
 
     // clear the input
     setTentativeGuess("");
