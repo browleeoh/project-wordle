@@ -2,18 +2,22 @@ import React from "react";
 
 import { range } from "../../utils";
 
+function Cell({ letter, status }) {
+  return <span className={`cell ${status}`}>{letter}</span>;
+}
+
 function Guess({ value }) {
-  const letters = value?.split("");
+  console.log({ value });
 
   return (
     <p className="guess">
-      {range(5).map((i) => {
-        return (
-          <span className="cell" key={i}>
-            {letters && letters[i]}
-          </span>
-        );
-      })}
+      {range(5).map((i) => (
+        <Cell
+          key={i}
+          letter={value ? value[i].letter : ""}
+          status={value ? value[i].status : ""}
+        />
+      ))}
     </p>
   );
 }
