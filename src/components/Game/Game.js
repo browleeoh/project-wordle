@@ -17,20 +17,21 @@ function Game() {
   const [gameStatus, setGameStatus] = React.useState("running");
 
   function handleAddGuess(tentativeGuess) {
-    setGuesses((guesses) => [...guesses, tentativeGuess]);
+    const nextGuesses = [...guesses, tentativeGuess];
+    setGuesses(nextGuesses);
 
-    // If the number of guesses is equal to the number of guesses allowed,
+    // user has lost
     if (
-      guesses.length === NUM_OF_GUESSES_ALLOWED - 1 &&
+      nextGuesses.length >= NUM_OF_GUESSES_ALLOWED &&
       tentativeGuess !== answer
     ) {
-      setGameStatus("sad");
+      setGameStatus("lost");
       return;
     }
 
-    // if the tentative guess is equal to the answer, then the game is over.
+    // user has won
     if (tentativeGuess === answer) {
-      setGameStatus("happy");
+      setGameStatus("won");
       return;
     }
   }
@@ -42,7 +43,13 @@ function Game() {
         handleAddGuess={handleAddGuess}
         isDisabled={gameStatus !== "running"}
       />
-      {gameStatus !== "running" && <Banner type={gameStatus} />}
+      {gameStatus !== "running" && (
+        <Banner
+          answer={answer}
+          numOfGuesses={guesses.length}
+          type={gameStatus}
+        />
+      )}
     </>
   );
 }

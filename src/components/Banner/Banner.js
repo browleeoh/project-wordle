@@ -1,25 +1,30 @@
 import React from "react";
 
-const banner = {
-  happy: (
-    <div className="happy banner">
-      <p>
-        <strong>Congratulations!</strong> Got it in
-        <strong> 3 guesses</strong>.
-      </p>
-    </div>
-  ),
-  sad: (
-    <div className="sad banner">
-      <p>
-        Sorry, the correct answer is <strong>LEARN</strong>.
-      </p>
-    </div>
-  ),
+const BANNER_TYPES = {
+  won: "happy",
+  lost: "sad",
 };
 
-function Banner({ type }) {
-  return <div className={`${type} banner`}>{banner[type]}</div>;
+function Banner({ answer, numOfGuesses, type }) {
+  return (
+    <div className={`${BANNER_TYPES[type]} banner`}>
+      {type === "won" && (
+        <p>
+          <strong>Congratulations!</strong>
+          {" Got it in "}
+          <strong>
+            {numOfGuesses > 1 ? `${numOfGuesses}guesses` : "1 guess"}
+          </strong>
+          .
+        </p>
+      )}
+      {type === "lost" && (
+        <p>
+          Sorry, the correct answer is <strong>{answer}</strong>.
+        </p>
+      )}
+    </div>
+  );
 }
 
 export default Banner;

@@ -8,7 +8,6 @@ function GuessInput({ handleAddGuess, isDisabled }) {
     e.preventDefault();
 
     // add guess to guesses
-    console.log({ guess: tentativeGuess });
     handleAddGuess(tentativeGuess);
 
     // clear the input
