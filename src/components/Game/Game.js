@@ -21,19 +21,17 @@ function Game() {
     const nextGuesses = [...guesses, tentativeGuess];
     setGuesses(nextGuesses);
 
+    // user has won
+    if (tentativeGuess === answer) {
+      setGameStatus("won");
+    }
+
     // user has lost
     if (
       nextGuesses.length >= NUM_OF_GUESSES_ALLOWED &&
       tentativeGuess !== answer
     ) {
       setGameStatus("lost");
-      return;
-    }
-
-    // user has won
-    if (tentativeGuess === answer) {
-      setGameStatus("won");
-      return;
     }
   }
 
